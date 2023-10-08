@@ -13,9 +13,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', 'KhademController@index');
+Route::get('/ertegha', 'KhademController@index');
 // Route::get('/users/{user}/permissions', 'User\PermissionController@create')->name('users.permissions')->middleware('can:staff-user-permissions');
 // Route::post('/users/{user}/permissions', 'User\PermissionController@store')->name('users.permissions.store')->middleware('can:show-users');
+Route::get('/sample', 'KhademController@create');
 
 
 Route::get('/emtiaz', 'KhademController@nomreh');

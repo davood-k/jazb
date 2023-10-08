@@ -1,380 +1,98 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
- <!-- Font Awesome -->
- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-  <!-- DataTables -->
-  <link rel="stylesheet" href="../datatables/dataTables.bootstrap4.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="../dist/css/adminlte.min.css">
-      <!-- bootstrap rtl -->
-  <link rel="stylesheet" href="../dist/css/bootstrap-rtl.min.css">
-  <!-- template rtl version -->
-  <link rel="stylesheet" href="../dist/css/custom-style.css">
-        <!-- Styles -->
+@extends('welcome')
 
-    </head>
- 
+@section('mohtava')
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>جداول داده</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-left">
-              <li class="breadcrumb-item"><a href="#">خانه</a></li>
-              <li class="breadcrumb-item active">جداول داده</li>
-            </ol>
-          </div>
-        </div>
-      </div><!-- /.container-fluid -->
-    </section>
+<style>
+  .tiledBackground {
+  background-image: url('dist/img/ttttt-min.jpg');
+  background-size: 100px;
+  width: 300px;
+  height: 300px;
+  border: 2px solid;
+  color: pink;
+}
 
-    <!-- Main content -->
-    <section class="content">
-      <div class="row">
-        <div class="col-12">
-          
-          <!-- /.card -->
+  .emtiazeb{
+    background: url('dist/img/ttttt-min.jpg');
+    background-repeat: no-repeat;
+    background-size: 1000px 500px;
+    border: 2px solid rgb(180, 180, 180);
+    border-radius: 15px;
+  }
+  .personally{
+    text-align: right;
+  }
+  .personallys h6{
+    text-align: right;
+    margin-bottom: 16px;
+  }
+  .personally h6{
+    padding-right: 20px;
+    margin-bottom: 23px;
+  }
+</style>
+<section class="emtiazeb container" style="margin-top:10%; width: 750px; height:500px;">
+  <h1 class="u-custom-font u-font-raleway u-text u-text-palette-4-base u-text-1 pt-3" style="text-align: center; color:#2cccc4;">محل خدمتی ایشان {{ $khadem->bkhademyarsr }} میباشد.</h1>
+  <hr>
 
-          <div class="card">
-            <div class="card-header">
-              <h3 class="card-title">لیست انتظار خادمیاران</h3>
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                <tr>
-                  <th>نام</th>
-                  <th>فامیل</th>
-                  <th>کدملی</th>
-                  <th>سنوات</th>
-                  <th>انضباط</th>
-                  <th>کیفی</th>
-                  <th>ایثارگری</th>
-                  <th>تحصیلات</th>
-                  <th>نخبه</th>
-                  <th>امتیاز کل</th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach ($results as $item)
-                <tr>
-                  <td>
-                  {{ $item->namesr }}
-                  </td>
-                  <td>
-                  {{ $item->familysr }}
-                  </td>
-                  <td>
-                  {{ $item->codemsr }}
-                  </td>
-                  <td>
-                  {{ $item->sanvatsr }}
-                  </td>
-                  <td>
-                  {{ $item->enzebatsr }}
-                  </td>
-                  <td>
-                  {{ $item->keifisr }}
-                  </td>
-                  <td>
-                  {{ $item->isarsr }}
-                  </td>
-                  <td>
-                  {{ $item->tahsilsr }}
-                  </td>
-                  <td>
-                  {{ $item->nokhbehsr }}
-                  </td>
-                  <td>
-                  {{ $item->sanvatsr + $item->enzebatsr + $item->keifisr + $item->isarsr + $item->tahsilsr + $item->nokhbehsr }}
-                  </td>
-                </tr>
-                @endforeach
-                </tbody>
-                <tfoot>
-                <tr>
-                  <th>نام</th>
-                  <th>فامیل</th>
-                  <th>کدملی</th>
-                  <th>سنوات</th>
-                  <th>انضباط</th>
-                  <th>کیفی</th>
-                  <th>ایثارگری</th>
-                  <th>تحصیلات</th>
-                  <th>نخبه</th>
-                  <th>امتیاز کل</th>
-                </tr>
-                </tfoot>
-              </table>
-            </div>
-            <!-- /.card-body -->
-          </div>
-          <!-- /.card -->
-        </div>
-        <!-- /.col -->
+
+    <div class="row">
+      <div class="col personally">
+          <h4 class="start col">نام: </h4>
+          <h6> {{ $khadem->namesr }} </h6>
+          <h4 class="start col">فامیل: </h4>
+          <h6> {{ $khadem->familysr }} </h6>
+          <h4 class="start col">کدملی: </h4>
+          <h6> {{ $khadem->codemsr }} </h6>
+          <h4 class="start col">سن: </h4>
+          <h6> {{ $khadem->tdatesr }} سال</h6>
       </div>
-      <!-- /.row -->
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <strong><a href="">داود خدادادی</a></strong>
-  </footer>
-</div>
-<!-- ./wrapper -->
-
-<!-- jQuery -->
-<script src="../plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- DataTables -->
-<script src="../plugins/datatables/jquery.dataTables.js"></script>
-<script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
-<!-- SlimScroll -->
-<script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
-<!-- FastClick -->
-<script src="../plugins/fastclick/fastclick.js"></script>
-<!-- AdminLTE App -->
-<script src="../dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="../dist/js/demo.js"></script>
-<!-- page script -->
-<script>
-  $(function () {
-    $("#example1").DataTable({
-        "language": {
-            "paginate": {
-                "next": "بعدی",
-                "previous" : "قبلی"
-            }
-        },
-        "info" : false,
+      <div class="col personally">
         
-    });
-    $('#example2').DataTable({
-        "language": {
-            "paginate": {
-                "next": "بعدی",
-                "previous" : "قبلی"
-            }
-        },
-      "info" : false,
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "autoWidth": false
-    });
-  });
-</script>
-
-    </body>
-</html>
-
-
-
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Laravel</title>
- <!-- Font Awesome -->
- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- DataTables -->
-  <link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap4.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="../dist/css/adminlte.min.css">
-      <!-- bootstrap rtl -->
-  <link rel="stylesheet" href="../dist/css/bootstrap-rtl.min.css">
-  <!-- template rtl version -->
-  <link rel="stylesheet" href="../dist/css/custom-style.css">
-    <script type="../dist/js" src="jquery.farsiInput.js"></script>
-        <!-- Styles -->
-
-    </head>
- 
-
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>جداول داده</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-left">
-              <li class="breadcrumb-item"><a href="#">خانه</a></li>
-              <li class="breadcrumb-item active">جداول داده</li>
-            </ol>
-          </div>
-        </div>
-      </div><!-- /.container-fluid -->
-    </section>
-
-    <!-- Main content -->
-    <section class="content">
-      <div class="row">
-        <div class="col-12">
-          
-          <!-- /.card -->
-
-          <div class="card">
-            <div class="card-header">
-              <h3 class="card-title">لیست انتظار خادمیاران</h3>
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                <tr>
-                  <th>نام</th>
-                  <th>فامیل</th>
-                  <th>کدملی</th>
-                  <th>تاریخ تولد</th>
-                  <th>شروع خدمت</th>
-                  <th>همراه</th>
-                  <th>بخش خدمتی</th>
-                  <th>معاونت</th>
-                  <th>امتیاز کل</th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach ($results as $item)
-                <tr>
-                  <td>
-                {{ $item->namesr }}
-                  </td>
-                  <td>
-                {{ $item->familysr }}
-                  </td>
-                  <td>
-                {{ $item->codemsr }}
-                  </td>
-                  <td>
-                {{ $item->tdatesr }}
-                  </td>
-                  <td>
-                {{ $item->dateshsr }}
-                  </td>
-                  <td>
-                {{ $item->mobilesr }}
-                  </td>
-                  <td>
-                {{ $item->bkhademyarsr }}
-                  </td>
-                  <td>
-                {{ $item->moavenat }}
-                  </td>
-                  <td>
-                  {{ $item->sanvatsr + $item->enzebatsr + $item->keifisr + $item->isarsr + $item->tahsilsr + $item->nokhbehsr }}
-                  </td>
-                </tr>
-                @endforeach
-                </tbody>
-                <tfoot>
-                <tr>
-                <th>نام</th>
-                  <th>فامیل</th>
-                  <th>کدملی</th>
-                  <th>تاریخ تولد</th>
-                  <th>شروع خدمت</th>
-                  <th>همراه</th>
-                  <th>بخش خدمتی</th>
-                  <th>معاونت</th>
-                  <th>امتیاز کل</th>
-                </tr>
-                </tfoot>
-              </table>
-            </div>
-            <!-- /.card-body -->
-          </div>
-          <!-- /.card -->
-        </div>
-        <!-- /.col -->
+        <h4 class="start col">تاریخ شروع خدمت: </h4>
+        <h6> {{ $khadem->dateshsr }} </h6>
+        <h4 class="start col">همراه: </h4>
+        <h6> {{ $khadem->mobilesr }} </h6>
+        {{-- <h4 class="start col">معاونت: </h4>
+        <h6> {{ $khadem->moavenat }} </h6>
+        <h4 class="start col">بخش خدمتی: </h4>
+        <h6> {{ $khadem->bkhademyarsr }}</h6> --}}
+       
       </div>
-      <!-- /.row -->
-    </section>
-    <!-- /.content -->
+      <div class="col personally">
+        <h4 class="start col">نمره های خدمتی </h4>
+        <h5 class="start col">سنوات: </h5>
+        
+        <h5 class="start col">انضباط خدمتی: </h5>
+
+        <h4 class="start col">کیفی: </h4>
+
+        <h4 class="start col">ایثارگری: </h4>
+
+        <h4 class="start col">تحصیلات: </h4>
+
+        <h4 class="start col">نخبه: </h4>
+
+        <h4 class="start col">مجموع نمره خدمتی: </h4>
+      </div>
+
+      <div class="col-2 personallys">
+        <h6>.....</h6>
+        <h6> {{ $khadem->sanvatsr  }} </h6>
+        <h6> {{ $khadem->enzebatsr  }} </h6>
+        <h6> {{ $khadem->keifisr  }} </h6>
+        <h6> {{ $khadem->isarsr  }} </h6>
+        <h6> {{ $khadem->tahsilsr }} </h6>
+        <h6> {{ $khadem->nokhbehsr  }} </h6>
+        <h6> {{ $khadem->sanvatsr + $khadem->enzebatsr + $khadem->keifisr + $khadem->isarsr + $khadem->tahsilsr + $khadem->nokhbehsr }} </h6>
+      </div>
+      <div class="u-container-layout u-container-layout-2"></div>
+    </div>    
+
   </div>
-  <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <strong><a href="">داود خدادادی</a></strong>
-  </footer>
-</div>
-<!-- ./wrapper -->
+  <div>
 
-<!-- jQuery -->
-<script src="../plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- DataTables -->
-<script src="../plugins/datatables/jquery.dataTables.js"></script>
-<script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
-<!-- SlimScroll -->
-<script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
-<!-- FastClick -->
-<script src="../plugins/fastclick/fastclick.js"></script>
-<!-- AdminLTE App -->
-<script src="../dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="../dist/js/demo.js"></script>
-<!-- page script -->
-<script type="text/javascript">
-  $(function () {
-    $("#example1").DataTable({
-        "language": {
-            "paginate": {
-                "next": "بعدی",
-                "previous" : "قبلی",
-            },
-            
-        },
-        "info" : true,
-        // "searching": false,
-        "emptyTable": "هیچ داده‌ای در جدول وجود ندارد",
-        "zeroRecords": "رکوردی با این مشخصات پیدا نشد",
-    });
-    $('#example2').DataTable({
-        "language": {
-            "paginate": {
-                "next": "بعدی",
-                "previous" : "قبلی"
-            }
-        },
-      "info" : false,
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "autoWidth": false
-    });
-  });
-  
- 
-</script>
+</section>
+@endsection
 
-    </body>
-</html>

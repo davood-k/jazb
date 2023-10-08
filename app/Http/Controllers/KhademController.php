@@ -22,7 +22,7 @@ class KhademController extends Controller
         }
         
         $Khadems= $Khadems->latest()->paginate(10);
-        return view('welcome' , compact('Khadems'));
+        return view('main' , compact('Khadems'));
     }
     public function saveImport(Request $request)
     {
@@ -44,7 +44,7 @@ class KhademController extends Controller
      */
     public function create()
     {
-        //
+        return view('sample');
     }
 
     /**
@@ -67,7 +67,7 @@ class KhademController extends Controller
     public function show(Khadem $khadem)
     {
         
-        return view('emtiaze' , compact('khadem'));
+        return view('emtiaz' , compact('khadem'));
     }
 
     /**
