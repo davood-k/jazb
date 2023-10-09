@@ -63,7 +63,7 @@
                 {{ $item->mobilesr }}
                   </td>
                   <td>
-                {{ $item->moavenat }}
+                    {{ $item->total }}
                   </td>
                   <td>
                 {{ $item->bkhademyarsr }}

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Khadem;
 use Illuminate\Http\Request;
 use App\Imports\KhademImport;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 
 class KhademController extends Controller
@@ -20,9 +21,17 @@ class KhademController extends Controller
         if ($keyword = request('search')){
             $Khadems->where('codemsr' , 'like' , "%$keyword%")->orWhere('namesr', 'like' , "%$keyword%")->orWhere('familysr' ,'like' , "%$keyword%");
         }
+
+        $roles = Khadem::all('sanvatsr','enzebatsr','keifisr','isarsr','tahsilsr','nokhbehsr')->values();
+
+        foreach ($roles as $key => $role) {
+            $result= $role['sanvatsr']+$role['enzebatsr']+$role['keifisr']+$role['isarsr']+$role['tahsilsr']+$role['nokhbehsr']."</br>";
+            $result [$key] ['$reli']= $result;
+            // print_r($result);
+        }
         
-        $Khadems= $Khadems->latest()->paginate(10);
-        return view('main' , compact('Khadems'));
+        //$Khadems= $Khadems->latest()->paginate(10);
+        //return view('main' , compact('Khadems'));
     }
     public function saveImport(Request $request)
     {
@@ -34,8 +43,9 @@ class KhademController extends Controller
     
     public function nomreh()
     {
-        $results = Khadem::all();
-        return view('emtiaz' ,compact('results'));
+        $items = Khadem::all();
+       
+        return view('sample' ,compact(''));
     }
     /**
      * Show the form for creating a new resource.

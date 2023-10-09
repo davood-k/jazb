@@ -85,7 +85,10 @@
         <h6> {{ $khadem->isarsr  }} </h6>
         <h6> {{ $khadem->tahsilsr }} </h6>
         <h6> {{ $khadem->nokhbehsr  }} </h6>
-        <h6> {{ $khadem->sanvatsr + $khadem->enzebatsr + $khadem->keifisr + $khadem->isarsr + $khadem->tahsilsr + $khadem->nokhbehsr }} </h6>
+        <?php
+        $tajmi = $khadem->sanvatsr + $khadem->enzebatsr + $khadem->keifisr + $khadem->isarsr + $khadem->tahsilsr + $khadem->nokhbehsr;
+        ?>
+        <h6> {{ $tajmi }} </h6>
       </div>
       <div class="u-container-layout u-container-layout-2"></div>
     </div>    

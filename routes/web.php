@@ -13,13 +13,13 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/ertegha', 'KhademController@index');
+Route::get('/', 'KhademController@index');
 // Route::get('/users/{user}/permissions', 'User\PermissionController@create')->name('users.permissions')->middleware('can:staff-user-permissions');
 // Route::post('/users/{user}/permissions', 'User\PermissionController@store')->name('users.permissions.store')->middleware('can:show-users');
-Route::get('/sample', 'KhademController@create');
+Route::get('/sample', 'KhademController@nomreh');
 
 
-Route::get('/emtiaz', 'KhademController@nomreh');
+Route::get('/emtiaze', 'KhademController@nomreh');
 
 Route::get('/emtiaz/{khadem}/edit', 'KhademController@show')->name('emtiaz.edit');
 Route::get('/import', 'KhademController@index');
