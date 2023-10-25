@@ -28,9 +28,10 @@ class KhademImport implements ToModel, WithHeadingRow
             'isarsr'=> $this->ReplacePersianNumber(trim($row['isarsr'])),
             'tahsilsr'=> trim($row['tahsilsr']),
             'nokhbehsr'=> $this->ReplacePersianNumber(trim($row['nokhbehsr'])),
-            'b-khademyarsr'=> trim($row['khademyarsr']),
+            'tajmi'=> $this->ReplacePersianNumber(trim($row['tajmi'])),
+            'bkhademyarsr'=> trim($row['khademyarsr']),
             'mobilesr'=> $this->ReplacePersianNumber(trim($row['mobilesr'])),
-            'date-shsr'=>$this->ReplacePersianNumber(trim($row['dateshsr'])),
+            'dateshsr'=>$this->ReplacePersianNumber(trim($row['dateshsr'])),
             'madraksr'=> trim($row['madraksr']),
             'descriptionsr'=>$this->ReplacePersianNumber(trim($row['descriptionsr'])),
         ]);

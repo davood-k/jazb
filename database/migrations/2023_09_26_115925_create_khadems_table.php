@@ -20,17 +20,19 @@ class CreateKhademsTable extends Migration
             $table->string('codemsr',10);
             $table->string('tdatesr',10);
             $table->string('moavenat',10);
-            $table->integer('sanvatsr');
-            $table->integer('enzebatsr');
-            $table->integer('keifisr');
-            $table->integer('isarsr');
-            $table->integer('tahsilsr');
-            $table->integer('nokhbehsr');            
+            $table->integer('sanvatsr')->default(0);
+            $table->integer('enzebatsr')->default(0);
+            $table->integer('keifisr')->default(0);
+            $table->integer('isarsr')->default(0);
+            $table->integer('tahsilsr')->default(0);
+            $table->integer('nokhbehsr')->default(0);
+            $table->integer('tajmi');
             $table->string('bkhademyarsr');
             $table->string('mobilesr');
             $table->string('dateshsr');
             $table->string('madraksr');
             $table->text('descriptionsr')->nullable();
+            $table->integer('sherkatDarAzsr')->default(0);
             $table->timestamps();
         });
     }

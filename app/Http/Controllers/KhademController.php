@@ -5,16 +5,11 @@ namespace App\Http\Controllers;
 use App\Khadem;
 use Illuminate\Http\Request;
 use App\Imports\KhademImport;
-use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 
 class KhademController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $Khadems=Khadem::query('search');
@@ -22,30 +17,86 @@ class KhademController extends Controller
             $Khadems->where('codemsr' , 'like' , "%$keyword%")->orWhere('namesr', 'like' , "%$keyword%")->orWhere('familysr' ,'like' , "%$keyword%");
         }
 
-        $roles = Khadem::all('sanvatsr','enzebatsr','keifisr','isarsr','tahsilsr','nokhbehsr')->values();
-
-        foreach ($roles as $key => $role) {
-            $result= $role['sanvatsr']+$role['enzebatsr']+$role['keifisr']+$role['isarsr']+$role['tahsilsr']+$role['nokhbehsr']."</br>";
-            $result [$key] ['$reli']= $result;
-            // print_r($result);
-        }
-        
-        //$Khadems= $Khadems->latest()->paginate(10);
-        //return view('main' , compact('Khadems'));
+        $all= $Khadems->latest()->orderBy('tajmi','DESC')->where('sherkatDarAzsr' , '0')->paginate(10);
+      
+        return view('listshow/all' , compact('all'));
     }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     * لیست اماکن
+     */
+    public function amaken()
+    {
+        $Khadems=Khadem::query('search');
+        if ($keyword = request('search')){
+            $Khadems->where('codemsr' , 'like' , "%$keyword%")->orWhere('namesr', 'like' , "%$keyword%")->orWhere('familysr' ,'like' , "%$keyword%");
+        }
+
+        $amaken= $Khadems->latest()->orderBy('tajmi','DESC')->where('moavenat' , 'اماکن')->where('sherkatDarAzsr' , '0')->paginate(10);
+      
+        return view('listshow/amaken' , compact('amaken'));
+    }
+    
+/**
+ * لیست تبلیغات
+ */
+    public function tablighat()
+    {
+        $Khadems=Khadem::query('search');
+        if ($keyword = request('search')){
+            $Khadems->where('codemsr' , 'like' , "%$keyword%")->orWhere('namesr', 'like' , "%$keyword%")->orWhere('familysr' ,'like' , "%$keyword%");
+        }
+
+        $tablighat= $Khadems->latest()->orderBy('tajmi','DESC')->where('moavenat' , 'تبلیغات')->where('sherkatDarAzsr' , '0')->paginate(10);
+
+        return view('listshow/tablighat' , compact('tablighat'));
+    }
+
+/**
+ * لیسیت بسیج
+ */
+    public function basij()
+    {
+        $Khadems=Khadem::query('search');
+        if ($keyword = request('search')){
+            $Khadems->where('codemsr' , 'like' , "%$keyword%")->orWhere('namesr', 'like' , "%$keyword%")->orWhere('familysr' ,'like' , "%$keyword%");
+        }
+
+        $basij= $Khadems->latest()->orderBy('tajmi','DESC')->where('moavenat' , 'بسیج')->where('sherkatDarAzsr' , '0')->paginate(10);
+
+        return view('listshow/basij' , compact('basij'));
+    }
+
+
+
+/**
+ * Import data excel to database
+ */
     public function saveImport(Request $request)
     {
         
         Excel::import(new KhademImport,$request->file);
-        return 'success';
+        return 'successfully imported excel form';
     }
 
-    
-    public function nomreh()
+
+/**
+ * view form excel to database
+ * 
+ */
+    public function importexl()
     {
-        $items = Khadem::all();
-       
-        return view('sample' ,compact(''));
+        return view('admin/input');
+    }
+
+
+
+    public function edit(khadem $khadems , $id)
+    { 
+        $khadem= $khadems->find($id);
+        return view('edit' , compact('khadem'));        
     }
     /**
      * Show the form for creating a new resource.
@@ -65,7 +116,7 @@ class KhademController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
@@ -74,21 +125,10 @@ class KhademController extends Controller
      * @param  \App\Khadem  $khadem
      * @return \Illuminate\Http\Response
      */
-    public function show(Khadem $khadem)
+    public function show(Khadem $khadems , $id)
     {
-        
-        return view('emtiaz' , compact('khadem'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Khadem  $khadem
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Khadem $khadem)
-    {
-        //
+        $khadem = $khadems->find($id);
+        return view('show' , compact('khadem'));
     }
 
     /**
@@ -98,9 +138,14 @@ class KhademController extends Controller
      * @param  \App\Khadem  $khadem
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Khadem $khadem)
+    public function update(Request $request , Khadem $khadems , $id)
     {
-        //
+        $results = $khadems->find($id);
+        $results ->update([
+            $results->namesr = $request->namesr,
+            $results->familysr = $request->familysr,
+        ]);
+        return redirect('all');
     }
 
     /**
@@ -109,8 +154,9 @@ class KhademController extends Controller
      * @param  \App\Khadem  $khadem
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Khadem $khadem)
+    public function destroy(Khadem $khadems)
     {
-        //
+        $khadems->delete();
+        return back();
     }
 }

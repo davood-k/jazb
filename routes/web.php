@@ -1,5 +1,6 @@
 <?php
 
+use App\Khadem;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -13,20 +14,35 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', 'KhademController@index');
-// Route::get('/users/{user}/permissions', 'User\PermissionController@create')->name('users.permissions')->middleware('can:staff-user-permissions');
-// Route::post('/users/{user}/permissions', 'User\PermissionController@store')->name('users.permissions.store')->middleware('can:show-users');
-Route::get('/sample', 'KhademController@nomreh');
-
-
-Route::get('/emtiaze', 'KhademController@nomreh');
-
-Route::get('/emtiaz/{khadem}/edit', 'KhademController@show')->name('emtiaz.edit');
-Route::get('/import', 'KhademController@index');
-Route::post('/import', 'KhademController@saveImport')->name('import');
-
-// Route::get('/import', 'DetailController@index');
-// Route::post('/import', 'DetailController@saveImport')->name('import');
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/', 'KhademController@index');
+Route::get('/amaken', 'KhademController@amaken');
+Route::get('/basij', 'KhademController@basij');
+Route::get('/tablighat', 'KhademController@tablighat');
+
+// کنترلر نمره آزمون
+Route::get('/azmoon', 'AzmoonController@index');
+Route::put('/azmoon/{id}', 'AzmoonController@create');
+Route::post('/azmoon/{id}/sabt', 'AzmoonController@store');
+
+Route::get('/person/show/{id}', 'KhademController@show');
+Route::get('/person/create/{id}', 'KhademController@edit');
+Route::post('/person/{id}/update/', 'KhademController@update');
+
+
+
+Route::delete('/delete/{khadems}', 'KhademController@destroy');
+
+
+/**
+ * route admin for excel
+ */
+Route::get('/importexl', 'KhademController@importexl')->name('importexl');
+Route::post('/import', 'KhademController@saveImport')->name('import');
+
+
+
+
