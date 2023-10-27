@@ -35,12 +35,10 @@ class AzmoonController extends Controller
     public function create(Khadem $khadems, $id)
     {
         
-        $khadem= $khadems->find($id);
-        print_r($khadem);
-        $khadem ->update([
-            $khadem->sherkatDarAzsr = 1,
-        ]);
-        
+        $khadem= Khadem::find($id);
+        $khadem ->update([$khadem->sherkatDarAzsr = 1]);
+
+        $khadem->azmoons()->create(['nomrehAzmoonsr'=> 0]);
         return back();
     }
 
@@ -49,16 +47,20 @@ class AzmoonController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
+     * ثبت نمره آزمون
      */
-    public function store(Request $request , $id)
+    public function store(Azmoon $Azmoon , Request $request, $id)
     {
-        Azmoon::create([
-            'khadem_id'=> $id,
-            'nomrehAzmoonsr'=>$request->nomrehAz
-        ]);
+        $date= Azmoon::value('marhalesr');
 
+        $azz = Azmoon::where('khadem_id',$id)->update([
+         'nomrehAzmoonsr' => $request->nomrehAz,
+         'marhalesr' => $date+1,
+         ]);
+        // $azmoon(['nomrehAzmoonsr' => $request->nomrehAz]);
+        
         return redirect()->back();
-        // ثبت نمره آزمون
+       
     }
 
     /**

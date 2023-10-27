@@ -14,8 +14,4 @@ class Khadem extends Model
         return $this->hasMany(Azmoon::class);
     }
 
-    public function khadem(){
-        $add =  Azmoon::get()->value('khdem_id');
-        print_r($add);
-    }
 }

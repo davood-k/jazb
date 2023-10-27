@@ -26,7 +26,7 @@ Route::get('/tablighat', 'KhademController@tablighat');
 // کنترلر نمره آزمون
 Route::get('/azmoon', 'AzmoonController@index');
 Route::put('/azmoon/{id}', 'AzmoonController@create');
-Route::post('/azmoon/{id}/sabt', 'AzmoonController@store');
+Route::post('/azmoon/{user_id}/sabt', 'AzmoonController@store');
 
 Route::get('/person/show/{id}', 'KhademController@show');
 Route::get('/person/create/{id}', 'KhademController@edit');

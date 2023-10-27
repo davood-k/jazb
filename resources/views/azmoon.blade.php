@@ -30,7 +30,7 @@
                             <th>نام خانوادگی</th>
                             <th>کدملی</th>
                             <th>محل خدمت</th>
-                            <th>امتیاز کل</th>
+                            <th>آزمون</th>
                             <th>اقدامات</th>
                         </tr>
                         @foreach($khadem as $user)
@@ -42,32 +42,39 @@
                               <?php
                                 $temp = \App\Khadem::find($user->id);
                               ?>
+
                               @foreach($khadem = $temp->azmoons as $item)
-                              @if ($item->nomrehAzmoonsr >= 17)
+                              @if ($item->nomrehAzmoonsr == 0)
+                              <td><button type="button" class="badge badge-success">عدم شرکت</button></td>
+                              @else
                               <td>{{ $item->nomrehAzmoonsr }}</td>
                               @endif
-                              
-
                               @endforeach
 
                               <td class="d-flex">
                                  <a class="btn btn-sm btn-info ml-2" href="{{ url('/person/show' , $user->id )}}">جزئیات</a>
-
-                                      
-
-                                <!-- Trigger the modal with a button -->
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                            <!-- Trigger the modal with a button -->
+                            @if ($item->nomrehAzmoonsr == 0)
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".myModal-{{$user->id}}">
                                     ثبت نمره
                                 </button>
+                                @elseif($item->nomrehAzmoonsr < 70)
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target=".myModal-{{$user->id}}">
+                                    رد شده
+                                </button>
+                                @elseif($item->nomrehAzmoonsr > 70)
+                                <button type="button" class="btn btn-success" data-toggle="modal" data-target=".myModal-{{$user->id}}">
+                                    قبول شده
+                                </button>
+                                @endif
                                 <!-- Modal -->
-                                <div id="myModal" class="modal fade mt-5" role="dialog">
+                                <div class="modal fade mt-5 myModal-{{$user->id}}" role="dialog">
                                 <div class="modal-dialog">
 
                                    <!-- Modal content-->
                                    <div class="modal-content">
                                      <div class="modal-header">
                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                       {{-- <h4 class="modal-title">Modal Header</h4> --}}
                                      </div>
                                      <form method="post" action='azmoon/{{ $user->id }}/sabt'>
                                         @csrf

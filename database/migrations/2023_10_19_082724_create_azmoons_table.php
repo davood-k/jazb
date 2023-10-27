@@ -17,7 +17,9 @@ class CreateAzmoonsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('khadem_id');
             $table->foreign('khadem_id')->references('id')->on('Khadems');
-            $table->integer('nomrehAzmoonsr')->nullable();
+            $table->integer('nomrehAzmoonsr')->default(0);
+            $table->integer('comisionsr')->default(0);
+            $table->integer('marhalesr')->default(0);
             $table->timestamps();
         });
         

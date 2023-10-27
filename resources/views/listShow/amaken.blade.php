@@ -43,7 +43,7 @@
                             <tr>
                                 <td ><a class="{{ $user->sherkatDarAzsr == 1 ? 'text-success bg-success' : '' }}">{{ $user->namesr }}</a></td>
                                 <td><a class="{{ $user->sherkatDarAzsr == 1 ? 'text-success bg-success' : '' }}">{{ $user->familysr }}</a></td>
-                                <td>{{ $user->codemsr }}</td>
+                                <td>{{ $user->id }}</td>
                                 <td>{{ $user->bkhademyarsr }}</td>
                                 <td>{{ $user->tajmi }}</td>
                                 <td class="d-flex">
