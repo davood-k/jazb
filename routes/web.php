@@ -1,6 +1,5 @@
 <?php
 
-use App\Khadem;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -28,6 +27,11 @@ Route::get('/azmoon', 'AzmoonController@index');
 Route::put('/azmoon/{id}', 'AzmoonController@create');
 Route::post('/azmoon/{user_id}/sabt', 'AzmoonController@store');
 
+// کنترلر کمیسیون
+Route::get('/comision', 'ComisionController@index');
+Route::put('/comision/{user_id}', 'ComisionController@create');
+Route::post('/comision/{user_id}/sabt', 'ComisionController@store');
+
 Route::get('/person/show/{id}', 'KhademController@show');
 Route::get('/person/create/{id}', 'KhademController@edit');
 Route::post('/person/{id}/update/', 'KhademController@update');
@@ -40,7 +44,7 @@ Route::delete('/delete/{khadems}', 'KhademController@destroy');
 /**
  * route admin for excel
  */
-Route::get('/importexl', 'KhademController@importexl')->name('importexl');
+Route::get('/importexcel', 'KhademController@importexl')->name('importexl');
 Route::post('/import', 'KhademController@saveImport')->name('import');
 
 

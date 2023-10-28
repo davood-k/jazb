@@ -78,7 +78,7 @@ class KhademController extends Controller
     {
         
         Excel::import(new KhademImport,$request->file);
-        return 'successfully imported excel form';
+        return redirect('/');
     }
 
 

@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Azmoon;
+use App\Comision;
 use App\Khadem;
 use Illuminate\Http\Request;
 
-class AzmoonController extends Controller
+class ComisionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,16 +16,15 @@ class AzmoonController extends Controller
      */
     public function index()
     {
+        $comAz =Azmoon::find(2);
         
+        $list = $comAz->khadem->where('id' , $comAz->khadem_id)->get();
         
-        
-        $list=Khadem::query('search');
         if ($keyword = request('search')){
             $list->where('codemsr' , 'like' , "%$keyword%")->orWhere('namesr', 'like' , "%$keyword%")->orWhere('familysr' ,'like' , "%$keyword%");
         }
-        $khadem = $list->where('sherkatDarAzsr' , '1')->get();
     
-        return view('azmoon' , compact('khadem'));
+        return view('comision' , compact('list'));
     }
 
     /**
@@ -32,14 +32,20 @@ class AzmoonController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Khadem $khadems, $id)
+    public function create(Azmoon $azmoon , $user_id)
     {
+        $azmoon= Azmoon::find($user_id);
+        $azmoon->update([
+            $azmoon->comisionsr = 1
+        ]);
+        $azmoon->comision()->update([
+            
+        ])
+        // $comisions = $azmoon;
+                
+        $array = Comision::create(['khadem_id'=> $azmoon->user_id]);
+        return $array;
         
-        $khadem= Khadem::find($id);
-        $khadem ->update([$khadem->sherkatDarAzsr = 1]);
-
-        $khadem->azmoons()->create(['comisionsr'=> 0]);
-        return back();
     }
 
     /**
@@ -47,30 +53,19 @@ class AzmoonController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
-     * ثبت نمره آزمون
      */
-    public function store(Khadem $Khadem , Request $request, $id)
+    public function store(Request $request)
     {
-        $date= Khadem::where('id',$id)->value('marhalesr');
-        $khadem= Khadem::find($id);
-
-        $khadem->azmoons()->where('khadem_id',$id)->update([
-         'nomrehAzmoonsr' => $request->nomrehAz
-         ]);
-         Khadem::where('id',$id)->update(['marhalesr'=> $date+1]);
-         
-        
-        return redirect()->back();
-       
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Azmoon  $azmoon
+     * @param  \App\Comision  $comision
      * @return \Illuminate\Http\Response
      */
-    public function show(Azmoon $azmoon)
+    public function show(Comision $comision)
     {
         //
     }
@@ -78,22 +73,22 @@ class AzmoonController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Azmoon  $azmoon
+     * @param  \App\Comision  $comision
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request)
+    public function edit(Comision $comision)
     {
-        
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Azmoon  $azmoon
+     * @param  \App\Comision  $comision
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Azmoon $azmoon)
+    public function update(Request $request, Comision $comision)
     {
         //
     }
@@ -101,10 +96,10 @@ class AzmoonController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Azmoon  $azmoon
+     * @param  \App\Comision  $comision
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Azmoon $azmoon)
+    public function destroy(Comision $comision)
     {
         //
     }

@@ -87,9 +87,7 @@
 <!-- jQuery UI 1.11.4 -->
 <script src=""></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-$.widget.bridge('uibutton', $.ui.button)
-</script>
+
 <!-- Bootstrap 4 -->
 <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- Morris.js charts -->
@@ -117,7 +115,7 @@ $.widget.bridge('uibutton', $.ui.button)
 <script src="/plugins/select2/select2.full.js"></script>
 
 <!-- AdminLTE App -->
-<script src="{{ asset('js/admin.js') }}"></script>
+{{-- <script src="{{ asset('js/admin.js') }}"></script> --}}
 <script>
     // $('#search').keyup(function(e){
     //   var searchValue = $(this).val();

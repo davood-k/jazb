@@ -8,7 +8,7 @@
         <a href="index3.html" class="nav-link">خانه</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">تماس</a>
+        <a href="" class="nav-link">تماس</a>
       </li>
     </ul>
 
@@ -33,13 +33,13 @@
           <span class="badge badge-danger navbar-badge">3</span>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-left">
-          <a href="#" class="dropdown-item">
+          <a href="" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
-              <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 ml-3 img-circle">
+              <img src="" alt="User Avatar" class="img-size-50 ml-3 img-circle">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
-                  حسام موسوی
+                  داود خدادادی
                   <span class="float-left text-sm text-danger"><i class="fa fa-star"></i></span>
                 </h3>
                 <p class="text-sm">با من تماس بگیر لطفا...</p>
@@ -52,7 +52,7 @@
           <a href="#" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
-              <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle ml-3">
+              <img src="" alt="User Avatar" class="img-size-50 img-circle ml-3">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
                   پیمان احمدی
@@ -65,13 +65,13 @@
             <!-- Message End -->
           </a>
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
+          <a href="" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
-              <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle ml-3">
+              <img src="" alt="User Avatar" class="img-size-50 img-circle ml-3">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
-                  سارا وکیلی
+                وکیلی
                   <span class="float-left text-sm text-warning"><i class="fa fa-star"></i></span>
                 </h3>
                 <p class="text-sm">پروژه اتون عالی بود مرسی واقعا</p>

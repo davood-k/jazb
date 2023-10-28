@@ -4,7 +4,7 @@
 
         <div class="card">
             <div class="card-header">
-                    <h3 class="card-title text-danger">شرکت کنندگان در آزمون</h3>
+                    <h3 class="card-title text-danger">لیست افراد کمیسیون</h3>
     
                     <div class="row card-tools">
     
@@ -34,7 +34,7 @@
                             <th style="width: 250px;">آزمون</th>
                             <th>اقدامات</th>
                         </tr>
-                        @foreach($khadem as $user)
+                        @foreach($list as $user)
                             <tr>
                               <td >{{ $user->namesr }}</td>
                               <td>{{ $user->familysr }}</td>
@@ -45,7 +45,7 @@
                                 $temp = \App\Khadem::find($user->id);
                               ?>
 
-                              @foreach($khadem = $temp->azmoons as $item)
+                              @foreach($temp->azmoons as $item)
                               @if ($item->nomrehAzmoonsr == 0)
                               <td><button type="button" class="badge badge-info mt-2">عدم شرکت</button></td>
                               @elseif ($item->nomrehAzmoonsr >= 70)

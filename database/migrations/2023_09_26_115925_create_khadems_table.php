@@ -31,6 +31,7 @@ class CreateKhademsTable extends Migration
             $table->string('mobilesr');
             $table->string('dateshsr');
             $table->string('madraksr');
+            $table->integer('marhalesr')->default(0);
             $table->text('descriptionsr')->nullable();
             $table->integer('sherkatDarAzsr')->default(0);
             $table->timestamps();
