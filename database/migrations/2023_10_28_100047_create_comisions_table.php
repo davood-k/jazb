@@ -18,6 +18,7 @@ class CreateComisionsTable extends Migration
             $table->unsignedBigInteger('khadem_id');
             $table->foreign('khadem_id')->references('id')->on('Khadems');
             $table->integer('ShHerasatsr')->nullable();
+            $table->string('TnMahalKhsr')->nullable();
             $table->boolean('TdHerasatsr')->default(0);
             $table->integer('ShToliatsr')->nullable();
             $table->boolean('TdToliatsr')->default(0);

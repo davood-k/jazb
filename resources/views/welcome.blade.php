@@ -112,6 +112,8 @@
 <!-- FastClick -->
 <script src="/plugins/fastclick/fastclick.js"></script>
 
+<script src="dist/js/adminlte.js"></script>
+
 <script src="/plugins/select2/select2.full.js"></script>
 
 <!-- AdminLTE App -->

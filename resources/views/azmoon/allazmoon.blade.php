@@ -4,7 +4,7 @@
 
         <div class="card">
             <div class="card-header">
-                    <h3 class="card-title text-danger">شرکت کنندگان در آزمون</h3>
+                    <h3 class="card-title text-danger">لیست کلی افراد شرکت کننده درآزمون</h3>
     
                     <div class="row card-tools">
     
@@ -31,7 +31,8 @@
                             <th>کدملی</th>
                             <th>محل خدمت</th>
                             <th>سنوات آزمون</th>
-                            <th style="width: 250px;">آزمون</th>
+                            <th >آزمون</th>
+                            <th >دلیل عدم قبولی</th>
                             <th>اقدامات</th>
                         </tr>
                         @foreach($khadem as $user)
@@ -39,7 +40,7 @@
                               <td >{{ $user->namesr }}</td>
                               <td>{{ $user->familysr }}</td>
                               <td>{{ $user->codemsr }}</td>
-                              <td>{{ $user->bkhademyarsr }}</td>
+                              <td>{{ $user->id }}</td>
                               <td>{{ $user->marhalesr }}</td>
                               <?php
                                 $temp = \App\Khadem::find($user->id);
@@ -54,45 +55,42 @@
                               <td><button type="button" class="badge badge-danger mt-2">عدم قبولی</button></td>
                               @endif
                               @endforeach
-
+                              <th >
+                                {{ $item->dalil }}
+                              </th>
                               <td class="d-flex">
-                                 <a class="btn btn-sm btn-info ml-2" href="{{ url('/person/show' , $user->id )}}">جزئیات</a>
-                           
-                                 <!-- Trigger the modal with a button -->
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".myModal-{{$user->id}}">
-                                    ثبت نمره
-                                </button>
-
-                                <!-- Modal -->
+                                 
+                                 @if ($item->nomrehAzmoonsr < 70)
+                                     
+                                 <a class="btn btn-sm btn-danger mr-2" data-toggle="modal" data-target=".myModal-{{$user->id}}">بازگردانی</a>
+                                 
+                                 <!-- Modal -->
                                 <div class="modal fade mt-5 myModal-{{$user->id}}" role="dialog">
-                                <div class="modal-dialog">
-
-                                   <!-- Modal content-->
-                                   <div class="modal-content">
-                                     <div class="modal-header">
-                                       <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                     </div>
-                                     <form method="post" action='azmoon/{{ $user->id }}/sabt'>
-                                        @csrf
-                                        <div class="mb-3">
-                                          <label for="message-text" name="nomrehAz" class="col-form-label mr-4">ثبت نمره آزمون:</label>
-                                          <input type="text" class="form-control w-25 m-auto" name="nomrehAz" id="nomrehAz">
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="submit" class="btn btn-primary">ثبت نمره</button>
-                                          </div>
-                                      </form>
-                                      
-                                   </div>
-                               
-                                  </div>
-                                </div>
+                                    <div class="modal-dialog">
+    
+                                       <!-- Modal content-->
+                                       <div class="modal-content">
+                                         <div class="modal-header">
+                                           <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                         </div>
+                                         <form method="post" action='{{ url('/person/edit' , $user->id )}}'>
+                                            @csrf
+                                            <div class="mb-3">
+                                             
+                                              <p class="m-3">آیا از بازیابی به آزمون هستید</p>
+                                              <input type="hidden" class="form-control w-50" name="ShDarComision" id="ShDarComision"  value="0">
+                                              <input type="hidden" class="form-control w-25 m-auto" name="bayegan" id="bayegan"  value="1">
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="submit" class="btn btn-primary">بله</button>
+                                              </div>
+                                          </form>
                                           
-                                <form method="post" action="comision/{{ $user->id }}">
-                                    @csrf
-                                    @method('put')
-                                 <button class="btn btn-warning mr-2">انتقال به کمیسیون</button>
-                                 </form>         
+                                       </div>
+                                   
+                                      </div>
+                                    </div>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach

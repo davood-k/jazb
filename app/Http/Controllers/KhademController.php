@@ -17,7 +17,7 @@ class KhademController extends Controller
             $Khadems->where('codemsr' , 'like' , "%$keyword%")->orWhere('namesr', 'like' , "%$keyword%")->orWhere('familysr' ,'like' , "%$keyword%");
         }
 
-        $all= $Khadems->latest()->orderBy('tajmi','DESC')->where('sherkatDarAzsr' , '0')->paginate(10);
+        $all= $Khadems->latest()->orderBy('dateshsr','asc')->paginate(30);
       
         return view('listshow/all' , compact('all'));
     }
@@ -34,7 +34,7 @@ class KhademController extends Controller
             $Khadems->where('codemsr' , 'like' , "%$keyword%")->orWhere('namesr', 'like' , "%$keyword%")->orWhere('familysr' ,'like' , "%$keyword%");
         }
 
-        $amaken= $Khadems->latest()->orderBy('tajmi','DESC')->where('moavenat' , 'اماکن')->where('sherkatDarAzsr' , '0')->paginate(10);
+        $amaken= $Khadems->latest()->orderBy('dateshsr','asc')->where('moavenat' , 'اماکن')->where('sherkatDarAzsr' , '0')->paginate(20);
       
         return view('listshow/amaken' , compact('amaken'));
     }
@@ -49,7 +49,7 @@ class KhademController extends Controller
             $Khadems->where('codemsr' , 'like' , "%$keyword%")->orWhere('namesr', 'like' , "%$keyword%")->orWhere('familysr' ,'like' , "%$keyword%");
         }
 
-        $tablighat= $Khadems->latest()->orderBy('tajmi','DESC')->where('moavenat' , 'تبلیغات')->where('sherkatDarAzsr' , '0')->paginate(10);
+        $tablighat= $Khadems->latest()->orderBy('dateshsr' , 'asc')->where('moavenat' , 'تبلیغات')->where('sherkatDarAzsr' , '0')->paginate(20);
 
         return view('listshow/tablighat' , compact('tablighat'));
     }
@@ -64,13 +64,31 @@ class KhademController extends Controller
             $Khadems->where('codemsr' , 'like' , "%$keyword%")->orWhere('namesr', 'like' , "%$keyword%")->orWhere('familysr' ,'like' , "%$keyword%");
         }
 
-        $basij= $Khadems->latest()->orderBy('tajmi','DESC')->where('moavenat' , 'بسیج')->where('sherkatDarAzsr' , '0')->paginate(10);
+        $basij= $Khadems->latest()->orderBy('dateshsr' , 'asc')->where('moavenat' , 'امنیت')->where('sherkatDarAzsr' , '0')->paginate(20);
 
         return view('listshow/basij' , compact('basij'));
     }
 
 
+    /**
+     * 
+     * خروجی اکسل
+     */
 
+    public function khorooji()
+    {
+        return '123';
+        // $Khadems=Khadem::query('search');
+        // if ($keyword = request('search')){
+        //     $Khadems->where('codemsr' , 'like' , "%$keyword%")->orWhere('namesr', 'like' , "%$keyword%")->orWhere('familysr' ,'like' , "%$keyword%");
+        // }
+
+        // $khorooji= $Khadems->latest()->orderBy('dateshsr' , 'asc')->where('moavenat' , 'امنیت')->where('sherkatDarAzsr' , '0')->paginate(20);
+
+        // return view('listshow/textbox' , compact('khorooji'));
+    }
+
+    
 /**
  * Import data excel to database
  */
@@ -156,7 +174,6 @@ class KhademController extends Controller
      */
     public function destroy(Khadem $khadems)
     {
-        $khadems->delete();
         return back();
     }
 }

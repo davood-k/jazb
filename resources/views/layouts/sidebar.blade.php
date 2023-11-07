@@ -24,90 +24,78 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item has-treeview">
-            <a href="/importexcel" class="nav-link active">
+          <li class="nav-item has-treeview {{ isActive('importexcel' , 'menu-open') }}">
+            <a class="nav-link {{ isActive('importexcel') }}">
               <i class="nav-icon fa fa-dashboard"></i>
               <p>
-                نامه های معرفی نیرو
-                <i class="right fa fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="./index.html" class="nav-link active">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>داشبورد اول</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="./index2.html" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>داشبورد دوم</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="./index3.html" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>داشبورد سوم</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-
-          <li class="nav-item has-treeview menu-open">
-            <a  href="/"class="nav-link">
-              <i class="nav-icon fa fa-tree"></i>
-              <p>
-ارتقاء
+لیست اکسل               
                 <i class="fa fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="amaken" class="nav-link">
+                <a href="{{ route('importexcel') }}" class="nav-link {{ isActive('importexcel') }}">
+                  <i class="fa fa-circle-o nav-icon"></i>
+                  <p>افزودن نیرو از اکسل</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item has-treeview {{ isActive(['amaken' , 'tablighat' , 'basij' , 'index'] , 'menu-open') }}">
+            <a  href="{{ route('index') }}"class="nav-link {{ isActive(['amaken' , 'tablighat' , 'basij' , 'index']) }}">
+              <i class="nav-icon fa fa-tree"></i>
+              <p>
+لیست کلی
+                <i class="fa fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('amaken') }}" class="nav-link {{ isActive('amaken') }}">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>اماکن</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="tablighat" class="nav-link">
+                <a href="{{ route('tablighat') }}" class="nav-link {{ isActive('tablighat') }}">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>تبلیغات</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="basij" class="nav-link">
+                <a href="{{ route('basij') }}" class="nav-link {{ isActive('basij') }}">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>بسیج</p>
                 </a>
               </li>
             </ul>
           </li>
-          <li class="nav-item has-treeview">
-            <a href="/azmoon" class="nav-link">
+          <li class="nav-item has-treeview {{ isActive(['azmoon'] , 'menu-open') }}">
+            <a class="nav-link {{ isActive(['azmoon']) }}">
               <i class="nav-icon fa fa-edit"></i>
               <p>
-                آزمون
+آزمون
                 <i class="fa fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/forms/general.html" class="nav-link">
+                <a href="{{ route('azmoon') }}" class="nav-link {{ isActive('azmoon') }}">
                   <i class="fa fa-circle-o nav-icon"></i>
-                  <p>قبول شدگان</p>
+                  <p>در مرحله آزمون</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="pages/forms/advanced.html" class="nav-link">
+              {{-- <li class="nav-item">
+                <a href="/azmoons/store" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
-                  <p>مردود شدگان</p>
+                  <p>بایگانی آزمون</p>
                 </a>
-              </li>
+              </li> --}}
             </ul>
           </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+          <li class="nav-item has-treeview {{ isActive(['comision'] , 'menu-open') }}">
+            <a class="nav-link {{ isActive(['comision']) }}">
               <i class="nav-icon fa fa-table"></i>
               <p>
                 کمیسیون
@@ -116,160 +104,22 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/tables/simple.html" class="nav-link">
+                <a href="{{ route('comision') }}" class="nav-link {{ isActive('comision') }}">
                   <i class="fa fa-circle-o nav-icon"></i>
-                  <p>جداول ساده</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/tables/data.html" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>جداول داده</p>
+                  <p>در مرحله کمیسون</p>
                 </a>
               </li>
             </ul>
           </li>
-          {{-- <li class="nav-header">مثال‌ها</li>
-          <li class="nav-item">
-            <a href="pages/calendar.html" class="nav-link">
-              <i class="nav-icon fa fa-calendar"></i>
+          <li class="nav-item has-treeview menu-open">
+            <a class="nav-link">
+              <i class="nav-icon fa fa-table"></i>
               <p>
-                تقویم
-                <span class="badge badge-info right">2</span>
-              </p>
-            </a>
-          </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fa fa-envelope-o"></i>
-              <p>
-                ایمیل‌ باکس
+                بایگانی
                 <i class="fa fa-angle-left right"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="pages/mailbox/mailbox.html" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>اینباکس</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/mailbox/compose.html" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>ایجاد</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/mailbox/read-mail.html" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>خواندن</p>
-                </a>
-              </li>
-            </ul>
           </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fa fa-book"></i>
-              <p>
-                صفحات
-                <i class="fa fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="pages/examples/invoice.html" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>سفارشات</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/examples/profile.html" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>پروفایل</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/examples/login.html" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>صفحه ورود</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/examples/register.html" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>صفحه عضویت</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/examples/lockscreen.html" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>قفل صفحه</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fa fa-plus-square-o"></i>
-              <p>
-                بیشتر
-                <i class="fa fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="pages/examples/404.html" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>ارور 404</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/examples/500.html" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>ارور 500</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/examples/blank.html" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>صفحه خالی</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="starter.html" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>صفحه شروع</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-header">متفاوت</li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fa fa-file"></i>
-              <p>مستندات</p>
-            </a>
-          </li>
-          <li class="nav-header">برچسب‌ها</li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fa fa-circle-o text-danger"></i>
-              <p class="text">مهم</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fa fa-circle-o text-warning"></i>
-              <p>هشدار</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fa fa-circle-o text-info"></i>
-              <p>اطلاعات</p>
-            </a>
-          </li> --}}
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

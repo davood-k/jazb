@@ -17,7 +17,7 @@ class CreateKhademsTable extends Migration
             $table->id();
             $table->string('namesr')->nullable();
             $table->string('familysr');
-            $table->string('codemsr',10);
+            $table->string('codemsr',14);
             $table->string('tdatesr',10);
             $table->string('moavenat',10);
             $table->integer('sanvatsr')->default(0);
@@ -34,6 +34,8 @@ class CreateKhademsTable extends Migration
             $table->integer('marhalesr')->default(0);
             $table->text('descriptionsr')->nullable();
             $table->integer('sherkatDarAzsr')->default(0);
+            $table->boolean('ShDarComision')->default(0);
+            $table->boolean('bayeganisr')->default(0);
             $table->timestamps();
         });
     }

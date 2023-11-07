@@ -10,7 +10,7 @@
     
                         <form action="" >
     
-                            <div class="input-group input-group-sm" style="width: 150px;">
+                            <div class="input-group input-group-sm ml-3" style="width: 150px;">
                                 <input type="text" id="search" name="search" class="form-control float-right" placeholder="جستجو" value="{{ request('search') }}">
     
                                 <div class="input-group-append ">
@@ -19,11 +19,6 @@
                             </div>
                         </form>
     
-                        <div class="btn btn-group-sm">
-                            
-                                <a class="btn btn-info" href="">ایجاد کاربر جدید</a>
-                          
-                        </div>
                     </div>
                     
                 </div>
@@ -36,50 +31,45 @@
                             <th>نام خانوادگی</th>
                             <th>کدملی</th>
                             <th>محل خدمت</th>
-                            <th>امتیاز کل</th>
+                            <th>شروع خدمت</th>
                             <th>اقدامات</th>
                         </tr>
                         @foreach($tablighat as $user)
                             <tr>
-                                <td ><a class="{{ $user->sherkatDarAzsr == 1 ? 'text-success bg-success' : '' }}">{{ $user->namesr }}</a></td>
-                                <td><a class="{{ $user->sherkatDarAzsr == 1 ? 'text-success bg-success' : '' }}">{{ $user->familysr }}</a></td>
+                                <td >{{ $user->namesr }}</td>
+                                <td>{{ $user->familysr }}</td>
                                 <td>{{ $user->codemsr }}</td>
                                 <td>{{ $user->bkhademyarsr }}</td>
-                                <td>{{ $user->tajmi }}</td>
+                                <td>{{ $user->dateshsr }}</td>
                                 <td class="d-flex">
 
                          <a class="btn btn-sm btn-info ml-2" href="{{ url('/person/show' , $user->id )}}">مشاهده جزئیات</a>
                          <a class="btn btn-sm btn-warning ml-2" href="{{ url('/person/create' , $user->id)}}">ویرایش خادمیار</a>
-                         <form action="delete/{{$user->id}}" method="post">
+                         {{-- <form action="delete/{{$user->id}}" method="post">
                             @csrf
                             @method('DELETE')
                            <button class="btn btn-sm btn-danger ml-2" type="submit">
                                حذف
                            </button>
-                       </form>
+                       </form> --}}
                                             
-                       @if ( $user->sherkatDarAzsr == 1 )
-                            <a class="btn btn-sm btn-danger">در مرحله آزمون</a>             
-                             @else
-                             <form method="post" action="azmoon/{{ $user->id }}">
-                                @csrf
-                                @method('put')
-                             <button class="btn btn-sm btn-info">انتقال به آزمون</button>
-                             </form>
-                             @endif    
-                                       
-                                </td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
-                </div>
+                       <form method="post" action="azmoon/{{ $user->id }}">
+                           @csrf
+                           @method('put')
+                        <button class="btn btn-sm btn-info">انتقال به آزمون</button>
+                        </form>
+                        @endforeach       
+                      </td>
+                    </tr>   
+                </tbody>
+             </table>
+         </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
                   {{ $tablighat->links() }}
                 </div>
-            </div>
+     </div>
             <!-- /.card -->
-        </div>
+ </div>
        
 @endsection

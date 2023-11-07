@@ -15,36 +15,41 @@ use Illuminate\Support\Facades\Route;
 */
 Auth::routes();
 
-// Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/', 'KhademController@index');
-Route::get('/amaken', 'KhademController@amaken');
-Route::get('/basij', 'KhademController@basij');
-Route::get('/tablighat', 'KhademController@tablighat');
+Route::get('/', 'KhademController@index')->name('index');
+Route::get('/amaken', 'KhademController@amaken')->name('amaken');
+Route::get('/person/show/{id}', 'KhademController@show');
+Route::get('/basij', 'KhademController@basij')->name('basij');
+Route::post('/khorooji', 'KhademController@khorooji')->name('khorooji');
+Route::get('/tablighat', 'KhademController@tablighat')->name('tablighat');
 
 // کنترلر نمره آزمون
-Route::get('/azmoon', 'AzmoonController@index');
+Route::get('/azmoon', 'AzmoonController@index')->name('azmoon');
+Route::get('/azmoons/store', 'AzmoonController@bayegan');
 Route::put('/azmoon/{id}', 'AzmoonController@create');
+Route::post('/person/edit/{id}', 'AzmoonController@show');
 Route::post('/azmoon/{user_id}/sabt', 'AzmoonController@store');
 
 // کنترلر کمیسیون
-Route::get('/comision', 'ComisionController@index');
-Route::put('/comision/{user_id}', 'ComisionController@create');
-Route::post('/comision/{user_id}/sabt', 'ComisionController@store');
+Route::get('/comision', 'ComisionController@index')->name('comision');
+Route::put('/comision/{id}', 'ComisionController@create');
+Route::get('/comisions/all', 'ComisionController@show');
+Route::post('/comision/{id}/sabt', 'ComisionController@store');
+Route::post('/comision/edit/{id}', 'ComisionController@edit');
 
-Route::get('/person/show/{id}', 'KhademController@show');
 Route::get('/person/create/{id}', 'KhademController@edit');
 Route::post('/person/{id}/update/', 'KhademController@update');
 
 
 
-Route::delete('/delete/{khadems}', 'KhademController@destroy');
+Route::delete('/delete/{id}', 'AzmoonController@destroy');
 
 
 /**
  * route admin for excel
  */
-Route::get('/importexcel', 'KhademController@importexl')->name('importexl');
+Route::get('/importexcel', 'KhademController@importexl')->name('importexcel');
 Route::post('/import', 'KhademController@saveImport')->name('import');
 
 

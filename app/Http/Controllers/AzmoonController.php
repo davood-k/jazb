@@ -15,16 +15,13 @@ class AzmoonController extends Controller
      */
     public function index()
     {
-        
-        
-        
         $list=Khadem::query('search');
         if ($keyword = request('search')){
             $list->where('codemsr' , 'like' , "%$keyword%")->orWhere('namesr', 'like' , "%$keyword%")->orWhere('familysr' ,'like' , "%$keyword%");
         }
-        $khadem = $list->where('sherkatDarAzsr' , '1')->get();
-    
-        return view('azmoon' , compact('khadem'));
+        $khadem = $list->where('sherkatDarAzsr' , '1')->where('ShDarComision' , '0')->where('bayeganisr' , '0')->get();
+        
+        return view('/azmoon/azmoon' , compact('khadem'));
     }
 
     /**
@@ -32,13 +29,13 @@ class AzmoonController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Khadem $khadems, $id)
+    public function create($id)
     {
-        
         $khadem= Khadem::find($id);
+        $khadem->azmoons()->create(['khadem_id'=> $id]);
         $khadem ->update([$khadem->sherkatDarAzsr = 1]);
 
-        $khadem->azmoons()->create(['comisionsr'=> 0]);
+        
         return back();
     }
 
@@ -59,7 +56,6 @@ class AzmoonController extends Controller
          ]);
          Khadem::where('id',$id)->update(['marhalesr'=> $date+1]);
          
-        
         return redirect()->back();
        
     }
@@ -67,24 +63,43 @@ class AzmoonController extends Controller
     /**
      * Display the specified resource.
      *
+     * 
      * @param  \App\Azmoon  $azmoon
      * @return \Illuminate\Http\Response
      */
-    public function show(Azmoon $azmoon)
+    public function bayegan()
     {
-        //
+        $list=Khadem::query('search');
+        if ($keyword = request('search')){
+            $list->where('codemsr' , 'like' , "%$keyword%")->orWhere('namesr', 'like' , "%$keyword%")->orWhere('familysr' ,'like' , "%$keyword%");
+        }
+        $khadem = $list->where('sherkatDarAzsr' , '1')->where('ShDarComision' , '0')->get();
+    
+        return view('/azmoon/allazmoon' , compact('khadem'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
+     *  * ارجاع به بایگان آزمون
+     * 
      * @param  \App\Azmoon  $azmoon
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request)
+    public function show(Request $request , $id)
     {
-        
+        $khadem= Khadem::find($id);
+        $khadem->where('id',$id)->update([
+             'bayeganisr' => $request->bayegan,
+        ]);
+        $khadem->azmoons()->where('khadem_id',$id)->update([
+            'dalil' => $request->dalil
+            ]);
+
+        return back();
     }
+
+
 
     /**
      * Update the specified resource in storage.
@@ -104,8 +119,14 @@ class AzmoonController extends Controller
      * @param  \App\Azmoon  $azmoon
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Azmoon $azmoon)
+    public function destroy(Azmoon $azmoon ,$id)
     {
-        //
+        Khadem::where('id' , $id)->update([
+            'marhalesr' => '0', 
+            'sherkatDarAzsr' => '0',
+        ]);
+        $result = $azmoon->where('khadem_id' , $id)->first();
+        $result->delete();
+        return back();
     }
 }

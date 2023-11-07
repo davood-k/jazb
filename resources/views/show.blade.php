@@ -70,7 +70,7 @@
                   <!-- /.card-body -->
                 <div class="card-footer">
                      <button type="submit" class="btn btn-info">ویرایش کاربر</button>
-                     <a href="/" class="btn btn-warning float-left">بازگشت</a>
+                     <a href="" class="btn btn-warning float-left">بازگشت</a>
                 </div>
                   <!-- /.card-footer -->
                 </form>

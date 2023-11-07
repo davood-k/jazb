@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Azmoon;
+use App\Comision;
 use Illuminate\Database\Eloquent\Model;
 
 class Khadem extends Model
@@ -14,4 +15,8 @@ class Khadem extends Model
         return $this->hasMany(Azmoon::class);
     }
 
+    public function comisions()
+    {
+        return $this->hasMany(Comision::class);
+    }
 }
