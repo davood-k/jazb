@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Khademyar;
 use Illuminate\Http\Request;
+use App\Exports\KhademyarExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class KhademyarController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -14,8 +17,35 @@ class KhademyarController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin/textbox');
     }
+
+
+    public function export(Request $request) 
+    {
+
+        $text = $request->input('expexcelsr');
+        
+        $lines = explode("\r\n" , $text);
+
+        $data = [];
+        foreach ($lines as $line) {
+            $data[] = [$line];
+        }
+
+        return Excel::download(new KhademyarExport($data), 'ada.xlsx');
+    }
+
+    /**
+     * 
+     * Show the form for information khodam.
+     * 
+     */
+    public function info()
+    {
+        return ('coming soon...');
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -24,7 +54,7 @@ class KhademyarController extends Controller
      */
     public function create()
     {
-        //
+        return view('efficient/insert');
     }
 
     /**
@@ -35,7 +65,15 @@ class KhademyarController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $request->all();
+    }
+
+    /**
+     *show PageString
+     */
+    public function pagestr(Khademyar $khademyar)
+    {
+        return view('efficient/PageString');
     }
 
     /**
@@ -82,4 +120,5 @@ class KhademyarController extends Controller
     {
         //
     }
+    
 }

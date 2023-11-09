@@ -24,8 +24,8 @@
   <link rel="stylesheet" href="/plugins/daterangepicker/daterangepicker-bs3.css">
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-  
   <!-- Google Font: Source Sans Pro -->
+  <script src="/plugins/jquery/jquery.min.js"></script>
   <link href="" rel="stylesheet">
   <!-- bootstrap rtl -->
   <link rel="stylesheet" href="/dist/css/bootstrap-rtl.min.css">
@@ -33,6 +33,24 @@
   <link rel="stylesheet" href="/dist/css/custom-style.css">
 
 </head>
+<style>
+  body, html {
+  height: 100%;
+}
+
+.bg { 
+  /* The image used */
+  background-image: url("https://mdbootstrap.com/img/Photos/Horizontal/Nature/full%20page/img(20).jpg");
+
+  /* Full height */
+  height: 100%; 
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+</style>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
 
@@ -64,14 +82,16 @@
 
     <!-- Main content -->
     <section class="content">
+      
         <div class="row">
+          
             @yield('mohtava')
         </div>
     </div>
 
    <!-- /.content-wrapper -->
    <footer class="main-footer">
-      <strong>CopyLeft &copy; 2018 <a href="">داود خدادادی</a>.</strong>
+      <strong>CopyLeft &copy; 2023 <a href="">داود خدادادی</a>.</strong>
    </footer>
 
     <!-- Control Sidebar -->
@@ -83,7 +103,7 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="/plugins/jquery/jquery.min.js"></script>
+
 <!-- jQuery UI 1.11.4 -->
 <script src=""></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->

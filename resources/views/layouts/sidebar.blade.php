@@ -25,7 +25,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview {{ isActive('importexcel' , 'menu-open') }}">
-            <a class="nav-link {{ isActive('importexcel') }}">
+            <a href="" class="nav-link {{ isActive('importexcel') }}">
               <i class="nav-icon fa fa-dashboard"></i>
               <p>
 لیست اکسل               
@@ -43,7 +43,7 @@
           </li>
 
           <li class="nav-item has-treeview {{ isActive(['amaken' , 'tablighat' , 'basij' , 'index'] , 'menu-open') }}">
-            <a  href="{{ route('index') }}"class="nav-link {{ isActive(['amaken' , 'tablighat' , 'basij' , 'index']) }}">
+            <a  href="" class="nav-link {{ isActive(['amaken' , 'tablighat' , 'basij' , 'index']) }}">
               <i class="nav-icon fa fa-tree"></i>
               <p>
 لیست کلی
@@ -72,7 +72,7 @@
             </ul>
           </li>
           <li class="nav-item has-treeview {{ isActive(['azmoon'] , 'menu-open') }}">
-            <a class="nav-link {{ isActive(['azmoon']) }}">
+            <a href=""  class="nav-link {{ isActive(['azmoon']) }}">
               <i class="nav-icon fa fa-edit"></i>
               <p>
 آزمون
@@ -86,16 +86,10 @@
                   <p>در مرحله آزمون</p>
                 </a>
               </li>
-              {{-- <li class="nav-item">
-                <a href="/azmoons/store" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>بایگانی آزمون</p>
-                </a>
-              </li> --}}
             </ul>
           </li>
           <li class="nav-item has-treeview {{ isActive(['comision'] , 'menu-open') }}">
-            <a class="nav-link {{ isActive(['comision']) }}">
+            <a href="" class="nav-link {{ isActive(['comision']) }}">
               <i class="nav-icon fa fa-table"></i>
               <p>
                 کمیسیون
@@ -111,7 +105,7 @@
               </li>
             </ul>
           </li>
-          <li class="nav-item has-treeview menu-open">
+          {{-- <li class="nav-item has-treeview menu-open">
             <a class="nav-link">
               <i class="nav-icon fa fa-table"></i>
               <p>
@@ -119,6 +113,50 @@
                 <i class="fa fa-angle-left right"></i>
               </p>
             </a>
+          </li> --}}
+          <li class="nav-item has-treeview {{ isActive(['khorooj' , 'pagestring'] , 'menu-open') }}">
+            <a href="" class="nav-link {{ isActive(['khorooj' , 'pagestring']) }}">
+              <i class="nav-icon fa fa-edit"></i>
+              <p>
+نامه های معرفی
+                <i class="fa fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('pagestring') }}" class="nav-link {{ isActive('pagestring') }}">
+                  <i class="fa fa-circle-o nav-icon"></i>
+                  <p>
+                    توضیحات
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('khorooj') }}" class="nav-link {{ isActive('khorooj') }}">
+                  <i class="fa fa-circle-o nav-icon"></i>
+                  <p>
+                    خروجی اکسل
+                  </p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item has-treeview {{ isActive(['informations'] , 'menu-open') }}">
+            <a href="" class="nav-link {{ isActive(['informations']) }}">
+              <i class="nav-icon fa fa-table"></i>
+              <p>
+                اطلاع رسانی خدام
+                <i class="fa fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('information') }}" class="nav-link {{ isActive('information') }}">
+                  <i class="fa fa-circle-o nav-icon"></i>
+                  <p>قوانین و مقررات</p>
+                </a>
+              </li>
+            </ul>
           </li>
         </ul>
       </nav>

@@ -37,8 +37,13 @@
                         <div class="col-6">
                            <img class="m-auto rounded-circle shadow-4-strong" src="/dist/img/avatar5.png" alt="">
                         </div>
-                        
-                       
+
+
+{{--                         
+                        for enter page
+                        https://mdbootstrap.com/previews/docs/latest/html/intros/intro-register-classic-form.html
+                        --}}
+                    
                     </div>
                 </div>
                    <hr>

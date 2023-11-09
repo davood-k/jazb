@@ -69,5 +69,5 @@
           </div>
           <!-- /.card-footer -->
          </form>
-     </div>
+      </div>
   @endsection

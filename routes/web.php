@@ -21,8 +21,16 @@ Route::get('/', 'KhademController@index')->name('index');
 Route::get('/amaken', 'KhademController@amaken')->name('amaken');
 Route::get('/person/show/{id}', 'KhademController@show');
 Route::get('/basij', 'KhademController@basij')->name('basij');
-Route::post('/khorooji', 'KhademController@khorooji')->name('khorooji');
 Route::get('/tablighat', 'KhademController@tablighat')->name('tablighat');
+Route::get('/information', 'KhademyarController@info')->name('information');
+
+Route::get('khorooj', 'KhademyarController@index')->name('khorooj');
+Route::post('khorooji', 'KhademyarController@export')->name('export');
+Route::get('addperson', 'KhademyarController@add')->name('person');
+Route::get('pagestring', 'KhademyarController@pagestr')->name('pagestring');
+Route::get('insert', 'KhademyarController@create')->name('insert');
+Route::post('sendpersons', 'KhademyarController@store')->name('sendpersons');
+
 
 // کنترلر نمره آزمون
 Route::get('/azmoon', 'AzmoonController@index')->name('azmoon');

@@ -15,6 +15,9 @@ class CreateKhademyarsTable extends Migration
     {
         Schema::create('khademyars', function (Blueprint $table) {
             $table->id();
+            $table->string('namesr')->nullable();
+            $table->string('familysr');
+            $table->string('codemsr',10);
             $table->timestamps();
         });
     }

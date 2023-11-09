@@ -3,15 +3,31 @@
 namespace App\Exports;
 
 use App\Khademyar;
-use Maatwebsite\Excel\Concerns\FromCollection;
+use Maatwebsite\Excel\Concerns\Exportable;
+use Maatwebsite\Excel\Concerns\FromQuery;
 
-class KhademyarExport implements FromCollection
+class KhademyarExport implements FromQuery
 {
-    /**
-    * @return \Illuminate\Support\Collection
-    */
-    public function collection()
+    use Exportable;
+    protected $data;
+
+    public function __construct($data)
     {
-        return Khademyar::all();
+        $this->data = $data;
     }
+
+    public function query()
+    {
+        return Khademyar::whereIn('codemsr' , $this->data);
+    }
+
+   /**
+    * 
+    */
+
+    // public function collection()
+    // {
+    //     return Khademyar::all();
+
+    // }
 }

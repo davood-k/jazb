@@ -75,18 +75,6 @@ class KhademController extends Controller
      * خروجی اکسل
      */
 
-    public function khorooji()
-    {
-        return '123';
-        // $Khadems=Khadem::query('search');
-        // if ($keyword = request('search')){
-        //     $Khadems->where('codemsr' , 'like' , "%$keyword%")->orWhere('namesr', 'like' , "%$keyword%")->orWhere('familysr' ,'like' , "%$keyword%");
-        // }
-
-        // $khorooji= $Khadems->latest()->orderBy('dateshsr' , 'asc')->where('moavenat' , 'امنیت')->where('sherkatDarAzsr' , '0')->paginate(20);
-
-        // return view('listshow/textbox' , compact('khorooji'));
-    }
 
     
 /**
