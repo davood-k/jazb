@@ -94,7 +94,7 @@
 
         <!-- /.content-wrapper -->
         <footer class="main-footer">
-            <strong>CopyLeft &copy; 2023 <a href="">داود خدادادی</a>.</strong>
+            <strong>CopyRights &copy; 2024 <a href="">داود خدادادی</a>.</strong>
         </footer>
 
         <!-- Control Sidebar -->
@@ -106,9 +106,7 @@
     <!-- ./wrapper -->
 
     <!-- jQuery -->
-
-    <!-- jQuery UI 1.11.4 -->
-    <script src=""></script>
+    
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 
     <!-- Bootstrap 4 -->

@@ -30,14 +30,27 @@
             </div>
             <div class="col-3">
                 <div class="form-group">
-                    <label>معرفی از</label>
-                    <input name="moa" type="text" class="form-control">
+                    <label style="display: block;margin-bottom: 15px;">معرفی از</label>
+                    <select name="morefi" id="moarefi">
+                        <option value="کتب انوار">کتب انوار</option>
+                        <option value="چایخانه">چایخانه</option>
+                        <option value="صندلی چرخدار">صندلی چرخدار</option>
+                    </select>
                 </div>
             </div>
             <div class="col-2">
                 <div class="form-group">
-                    <label>معاونت</label>
-                    <input name="mo" type="text" class="form-control">
+                    <script>
+                        document.getElementById('moarefi'){
+                            console.log('value');
+                        }
+                    </script>
+                    {{-- <label style="display: block;margin-bottom: 15px;">معاونت</label>
+                    <select name="morefi" id="moarefi">
+                        <option value="کتب انوار">اماکن</option>
+                        <option value="چایخانه">خدمات زائرین</option>
+                        <option value="صندلی چرخدار">سازمان فرهنگی</option>
+                    </select> --}}
                 </div>
             </div>
             <div class="col-2">

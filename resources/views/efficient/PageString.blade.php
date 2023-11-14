@@ -52,8 +52,8 @@
             </br>
         </div>
         <div class="row">
-            <div class="mb-4 text-center col-md-6">
-                <button class="btn btn-danger" onclick="Reset()">رفرش کردن</button>
+            <div class="m-4 align-right col-md-6">
+                <button class="btn btn-xs btn-primary" onclick="Reset()"><x-feathericon-refresh-ccw />رفرش کردن</button>
             </div>
         </div>
 
