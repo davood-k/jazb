@@ -21,19 +21,19 @@ class KhademyarController extends Controller
     }
 
 
-    public function export(Request $request) 
+    public function export(Request $request)
     {
 
         $text = $request->input('expexcelsr');
-        
-        $lines = explode("\r\n" , $text);
+
+        $lines = explode("\r\n", $text);
 
         $data = [];
         foreach ($lines as $line) {
             $data[] = [$line];
         }
 
-        return Excel::download(new KhademyarExport($data), 'ada.xlsx');
+        return Excel::download(new KhademyarExport($data), 'matchCode.xlsx');
     }
 
     /**
@@ -120,5 +120,4 @@ class KhademyarController extends Controller
     {
         //
     }
-    
 }

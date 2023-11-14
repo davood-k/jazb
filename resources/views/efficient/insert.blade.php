@@ -4,7 +4,7 @@
     {{-- @include('admin.layouts.errors') --}}
 
     <!-- form start -->
-    <form class="" method="post" action="{{ route('sendpersons')}}">
+    <form class="" method="post" action="{{ route('sendpersons') }}">
         @csrf
         <div class="row">
             <div class="col-1">
@@ -61,7 +61,7 @@
                         <th>ملاحظات</th>
                     </thead>
                     <tbody id="tbody">
-                        
+
                     </tbody>
                 </table>
             </div>
@@ -75,10 +75,10 @@
     <script>
         $('.counter').keydown(function(e) {
             if (e.keyCode == 13) {
-                $('#tbody').empty(); 
+                $('#tbody').empty();
                 var count = parseInt($('.counter').val());
-                
-                e.preventDefault(); 
+
+                e.preventDefault();
                 for (let i = 0; i < count; i++) {
                     $('#tbody').append(`<tr> 
             <td> 

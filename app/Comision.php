@@ -14,8 +14,8 @@ class Comision extends Model
     {
         return $this->belongsTo(Khadem::class);
     }
-    
-     public function azmoons()
+
+    public function azmoons()
     {
         return $this->belongsTo(Azmoon::class);
     }

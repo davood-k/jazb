@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Khadem extends Model
 {
-    protected $fillable = ['namesr', 'familysr', 'codemsr', 'tdatesr', 'sanvatsr', 'moavenat', 'enzebatsr', 'keifisr', 'isarsr', 'tahsilsr', 'nokhbehsr' , 'tajmi' , 'bkhademyarsr', 'mobilesr', 'dateshsr' , 'madraksr','marhalesr', 'descriptionsr'];
+    protected $fillable = ['namesr', 'familysr', 'codemsr', 'tdatesr', 'sanvatsr', 'moavenat', 'enzebatsr', 'keifisr', 'isarsr', 'tahsilsr', 'nokhbehsr', 'tajmi', 'bkhademyarsr', 'mobilesr', 'dateshsr', 'madraksr', 'marhalesr', 'descriptionsr'];
 
     public function azmoons()
     {

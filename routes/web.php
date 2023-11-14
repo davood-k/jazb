@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -23,21 +24,22 @@ Route::get('/person/show/{id}', 'KhademController@show');
 Route::get('/basij', 'KhademController@basij')->name('basij');
 Route::get('/tablighat', 'KhademController@tablighat')->name('tablighat');
 Route::get('/information', 'KhademyarController@info')->name('information');
-
-Route::get('khorooj', 'KhademyarController@index')->name('khorooj');
-Route::post('khorooji', 'KhademyarController@export')->name('export');
-Route::get('addperson', 'KhademyarController@add')->name('person');
-Route::get('pagestring', 'KhademyarController@pagestr')->name('pagestring');
-Route::get('insert', 'KhademyarController@create')->name('insert');
-Route::post('sendpersons', 'KhademyarController@store')->name('sendpersons');
-
-
 // کنترلر نمره آزمون
 Route::get('/azmoon', 'AzmoonController@index')->name('azmoon');
 Route::get('/azmoons/store', 'AzmoonController@bayegan');
 Route::put('/azmoon/{id}', 'AzmoonController@create');
 Route::post('/person/edit/{id}', 'AzmoonController@show');
 Route::post('/azmoon/{user_id}/sabt', 'AzmoonController@store');
+
+Route::get('khorooj', 'KhademyarController@index')->name('khorooj');
+Route::post('khorooji', 'KhademyarController@export')->name('export');
+Route::get('addperson', 'KhademyarController@add')->name('person');
+Route::get('insert', 'KhademyarController@create')->name('insert');
+Route::post('sendpersons', 'KhademyarController@store')->name('sendpersons');
+
+Route::get('pagestring', 'KhademyarController@pagestr')->name('pagestring');
+
+
 
 // کنترلر کمیسیون
 Route::get('/comision', 'ComisionController@index')->name('comision');
@@ -60,6 +62,4 @@ Route::delete('/delete/{id}', 'AzmoonController@destroy');
 Route::get('/importexcel', 'KhademController@importexl')->name('importexcel');
 Route::post('/import', 'KhademController@saveImport')->name('import');
 
-
-
-
+Route::get('/home', 'HomeController@index')->name('home');

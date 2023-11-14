@@ -21,7 +21,6 @@ class CreateAzmoonsTable extends Migration
             $table->text('dalil')->nullable();
             $table->timestamps();
         });
-        
     }
 
     /**

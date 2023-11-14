@@ -15,7 +15,7 @@ class CreatePlaceKhsTable extends Migration
     {
         Schema::create('place_khs', function (Blueprint $table) {
             $table->id();
-            $table->string('tashKhsr' , 50);
+            $table->string('tashKhsr', 50);
         });
     }
 
